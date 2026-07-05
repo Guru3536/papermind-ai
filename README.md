@@ -1,266 +1,195 @@
-# 🚀 PaperMind AI
-### AI-Powered Research Paper Assistant using Semantic Search, Scientific NLP, and Retrieval-Augmented Generation (RAG)
+# 🧠 PaperMind AI
+### AI-Powered Research Assistant for Scientific Literature
 
 <p align="center">
-  <img src="images/banner.png" width="100%">
+  <img src="images/app.jpeg" alt="PaperMind AI" width="1000"/>
 </p>
 
-<p align="center">
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![NLP](https://img.shields.io/badge/NLP-SciSpaCy-green)
+![FAISS](https://img.shields.io/badge/FAISS-Vector_Search-orange)
+![RAG](https://img.shields.io/badge/RAG-Enabled-red)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
-![NLP](https://img.shields.io/badge/NLP-Research-green?style=for-the-badge)
-![FAISS](https://img.shields.io/badge/FAISS-Vector%20Search-red?style=for-the-badge)
-![Sentence Transformers](https://img.shields.io/badge/Sentence--Transformers-Embeddings-orange?style=for-the-badge)
-![SciSpaCy](https://img.shields.io/badge/SciSpaCy-NER-purple?style=for-the-badge)
-![RAG](https://img.shields.io/badge/RAG-Q%26A-black?style=for-the-badge)
 
-</p>
+PaperMind AI is an AI-powered research assistant that helps researchers discover, analyze, summarize, and interact with scientific papers using Natural Language Processing (NLP), Semantic Search, Scientific Named Entity Recognition (NER), Research Analytics, and Retrieval-Augmented Generation (RAG).
 
----
-
-# 📖 Overview
-
-PaperMind AI is an intelligent research paper assistant designed to make literature exploration faster and more effective.
-
-Instead of only searching papers, the system helps users:
-
-- 🔍 Discover relevant research papers using Semantic Search
-- 📄 Understand papers through AI-generated summaries
-- 💡 Explain complex papers in simple language
-- 🧬 Extract scientific entities automatically
-- 📊 Analyze research trends and statistics
-- 🎯 Discover potential research gaps
-- 🤖 Ask questions directly from retrieved papers using Retrieval-Augmented Generation (RAG)
-
-The project combines multiple NLP techniques into a single end-to-end research workflow.
-
----
-
-# 🎯 Motivation
-
-Researchers often spend hours finding, reading, and comparing papers.
-
-PaperMind AI aims to reduce that effort by combining modern NLP, vector search, scientific entity extraction, analytics, and RAG into one platform.
+The project began as a semantic research paper search engine and has been extended into a complete research assistant capable of searching papers by meaning, extracting scientific entities, generating summaries, visualizing research trends, clustering topics, and answering research questions using retrieved papers.
 
 ---
 
 # ✨ Features
 
-## 🔍 Semantic Search
+### 🔍 Semantic Paper Search
+- Search research papers using semantic similarity instead of exact keyword matching.
+- Powered by Sentence Transformers and FAISS vector search.
 
-Retrieve relevant research papers using
+### ⚡ Hybrid Search
+- Combines semantic similarity with extracted scientific entities and keywords.
+- Supports filtering by methods and datasets.
 
-- Sentence Transformers
-- FAISS Vector Search
+### 📄 Automatic Summarization
+- Generates concise summaries of retrieved research papers.
+- Uses Facebook BART for abstractive summarization.
 
-instead of traditional keyword matching.
-
----
-
-## 📄 Search → Summarize → Explain
-
-Every retrieved paper can be
-
-- summarized
-- simplified
-- explained in beginner-friendly language
-
-using Large Language Models.
-
----
-
-## 🧬 Scientific Named Entity Recognition
-
-Extracts
+### 🧬 Scientific Named Entity Recognition
+Automatically extracts:
 
 - Methods
-- Algorithms
 - Datasets
 - Metrics
-- Scientific Terms
+- Scientific Concepts
 
-using **SciSpaCy**.
+using SciSpaCy together with a custom entity classification pipeline.
 
----
+### 🔑 Keyword Extraction
+- Extracts important keywords using KeyBERT.
+- Improves search quality and research analysis.
 
-## 🏷 Automatic Keyword Extraction
+### 📊 Research Analytics
+Analyze your research collection through:
 
-Uses **KeyBERT** to automatically generate meaningful keywords for every research paper.
+- Most common research methods
+- Most common datasets
+- Entity frequency analysis
+- Research statistics
 
----
+### 🗺 Topic Clustering
+Projects research papers into a low-dimensional space using PCA to visualize topic clusters and relationships between papers.
 
-## ⚡ Hybrid Search
+### 📈 Trend Analysis
+Tracks the popularity of research methods over time using publication dates retrieved from the arXiv API.
 
-Improves retrieval quality by combining
+### 🤖 Retrieval-Augmented Generation (RAG)
+Ask natural language questions about research papers and receive grounded answers generated from retrieved documents.
 
-- Semantic Similarity
-- Scientific Entities
-- Keywords
+### 🎨 Interactive Gradio Interface
+A clean web interface that integrates:
 
-instead of relying only on embedding similarity.
-
----
-
-## 🧠 Topic Clustering
-
-Groups similar research papers using
-
-- K-Means Clustering
-
-to help users explore research domains.
-
----
-
-## 📊 Research Analytics Dashboard
-
-Visualizes
-
-- Publication Trends
-- Top Authors
-- Popular Keywords
-- Research Topics
-
-through interactive charts.
+- Semantic Search
+- Hybrid Retrieval
+- Summarization
+- RAG Question Answering
 
 ---
 
-## 🎯 Research Gap Finder
-
-Helps identify
-
-- less explored topics
-- underrepresented research directions
-
-for future work.
-
----
-
-## 📈 Trend Analysis
-
-Analyzes how research topics evolve over time.
-
----
-
-## 🤖 Retrieval-Augmented Generation (RAG)
-
-Users can ask questions such as
-
-> "What are the latest applications of Large Language Models in Healthcare?"
-
-The system retrieves relevant papers and generates context-aware answers grounded in the retrieved research instead of relying solely on the LLM's internal knowledge.
-
----
-
-## 🖥 Interactive Gradio Interface
-
-A complete web interface allowing users to
-
-- Search
-- Analyze
-- Summarize
-- Explore Trends
-- Ask Questions
-
-from one dashboard.
-
----
-
-# 🏗 System Architecture
+# 🏗 Project Workflow
 
 ```
-                User Query
-                     │
-                     ▼
-        Sentence Transformer Embeddings
-                     │
-                     ▼
-             FAISS Vector Database
-                     │
-          Top Relevant Research Papers
-                     │
-        ┌────────────┴────────────┐
-        ▼                         ▼
-Scientific NER              Keyword Extraction
-        │                         │
-        └────────────┬────────────┘
-                     ▼
-              Hybrid Re-ranking
-                     │
-                     ▼
-      Search → Summarize → Explain
-                     │
-                     ▼
-         Analytics & Trend Analysis
-                     │
-                     ▼
-             RAG Question Answering
-                     │
-                     ▼
-                Final Response
+                   User Query
+                        │
+                        ▼
+             Sentence Transformer
+                        │
+                        ▼
+                FAISS Vector Search
+                        │
+                        ▼
+                 Hybrid Re-ranking
+                        │
+          ┌─────────────┴─────────────┐
+          ▼                           ▼
+  Scientific NER               Keyword Matching
+          │                           │
+          └─────────────┬─────────────┘
+                        ▼
+             Relevant Research Papers
+                        │
+        ┌───────────────┴───────────────┐
+        ▼                               ▼
+ Automatic Summarization          RAG Question Answering
+        │
+        ▼
+ Research Analytics & Topic Clustering
 ```
 
 ---
 
-# 📷 Demo
+# 📸 Project Screenshots
 
-## Semantic Search
+## Semantic Search + RAG Interface
 
-![Semantic Search](images/semantic-search.png)
-
----
-
-## Summarize & Explain
-
-![Summary](images/summarize-explain.png)
-
----
-
-## Scientific NER
-
-![NER](images/scientific-ner.png)
+<p align="center">
+<img src="images/app.jpeg" width="1000">
+</p>
 
 ---
 
 ## Topic Clustering
 
-![Topic Clustering](images/topic-clustering.png)
+<p align="center">
+<img src="images/topic_map.png" width="900">
+</p>
 
 ---
 
 ## Research Analytics
 
-![Analytics](images/analytics-dashboard.png)
-
----
-
-## RAG Question Answering
-
-![RAG](images/rag-qa.png)
+<p align="center">
+<img src="images/analytics.png" width="900">
+</p>
 
 ---
 
 # 🛠 Tech Stack
 
-| Category | Technologies |
-|-----------|--------------|
-| Language | Python |
-| NLP | Sentence Transformers, SciSpaCy, KeyBERT |
-| Retrieval | FAISS |
-| LLM | Hugging Face Transformers |
+| Category | Technology |
+|-----------|------------|
+| Programming Language | Python |
+| Semantic Embeddings | Sentence Transformers |
+| Vector Database | FAISS |
+| NLP | SpaCy + SciSpaCy |
+| Keyword Extraction | KeyBERT |
+| Summarization | Facebook BART |
+| RAG | Hugging Face Transformers |
 | Machine Learning | Scikit-learn |
 | Data Processing | Pandas, NumPy |
+| Visualization | Matplotlib |
 | Interface | Gradio |
-| Data Source | arXiv API |
+| Dataset | arXiv API |
 
 ---
 
-# 📦 Installation
+# 📂 Repository Structure
+
+```
+papermind-ai/
+│
+├── README.md
+├── LICENSE
+├── requirements.txt
+├── papermind_ai.ipynb
+│
+├── images/
+│   ├── app.jpeg
+│   ├── topic_map.png
+│   ├── analytics.png
+│   └── architecture.png
+│
+├── docs/
+│
+└── data/
+```
+
+---
+
+# 🚀 Installation
+
+Clone the repository
 
 ```bash
-git clone https://github.com/Guru3536/papermind-ai.git
+git clone https://github.com/<YOUR_USERNAME>/papermind-ai.git
+```
 
+Move into the project directory
+
+```bash
 cd papermind-ai
+```
 
+Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
@@ -270,46 +199,63 @@ Launch the notebook
 jupyter notebook papermind_ai.ipynb
 ```
 
-or
-
-Open the notebook directly in Google Colab.
+or open it directly in Google Colab.
 
 ---
 
-# 🚀 Future Improvements
+# 📌 Future Improvements
 
 - PDF Upload Support
-- Citation Generation
-- Multi-document RAG
-- Agentic Research Workflow
-- LangGraph Integration
-- Pinecone / Chroma Vector Database
-- Cross-paper Comparison
-- Personalized Research Recommendations
+- Multi-paper Comparison
+- Citation Network Visualization
+- Research Recommendation Engine
+- Hugging Face Spaces Deployment
+- Docker Support
+- Persistent Vector Database
+- Interactive Analytics Dashboard
+
+---
+
+# 🎯 Learning Outcomes
+
+This project helped me gain practical experience with:
+
+- Semantic Search
+- Retrieval-Augmented Generation (RAG)
+- Vector Databases (FAISS)
+- Scientific NLP
+- Information Retrieval
+- Sentence Embeddings
+- Named Entity Recognition
+- Keyword Extraction
+- Research Analytics
+- Interactive AI Applications using Gradio
 
 ---
 
 # 🙏 Acknowledgements
 
-The foundational Semantic Search and Search → Summarize → Explain pipeline for this project was developed under the guidance of my mentor.
+The foundation of this project was built under the guidance of my mentor, who introduced me to semantic search and research paper retrieval.
 
-Building upon that foundation, I independently extended the platform by implementing:
+I later extended the project by implementing:
 
-- Scientific Named Entity Recognition (SciSpaCy)
-- Hybrid Search
+- Hybrid Retrieval
+- Scientific NER
 - Keyword Extraction
+- Research Analytics
 - Topic Clustering
-- Research Analytics Dashboard
-- Research Gap Finder
 - Trend Analysis
-- Retrieval-Augmented Generation (RAG) Question Answering
-- Integrated Gradio Interface
+- Retrieval-Augmented Generation (RAG)
+- Enhanced Gradio Interface
 
-This project has been an incredible learning experience in combining modern NLP and AI techniques into a practical research assistant.
+These additions transformed the project into a more comprehensive AI-powered research assistant.
 
 ---
 
-# ⭐ If you found this project interesting,
+# 📄 License
 
-consider giving it a ⭐ on GitHub!
+This project is licensed under the MIT License.
 
+---
+
+⭐ If you found this project interesting, consider giving the repository a star!
